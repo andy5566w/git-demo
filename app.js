@@ -22,3 +22,20 @@ Dog.prototype.constructor = Animal
 
 const d = new Dog()
 console.log(d.color);
+
+const btn = document.querySelector('.btn')
+btn.addEventListener('click',debounce(()=>{
+    console.log('click!!')
+}))
+function debounce(fn) {
+    let timer
+
+    return function (){
+        const context = this
+        const argus = arguments
+        clearTimeout(timer)
+        timer=   setTimeout(()=>{
+            fn.apply(context, argus)
+        },1000)
+    }
+}
